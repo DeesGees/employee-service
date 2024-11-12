@@ -1,0 +1,21 @@
+﻿@model List<Users>
+
+
+
+<div class="d-flex flex-wrap align-items-center">
+    @foreach (var user in Model)
+    {
+        <div class="card p-3 m-3 shadow shadow-lg text-center" style="width: 18rem; height: 22rem;">
+            <h4 class="mt-5">@user.Name</h4>
+            <h3>@user.Surname.ToUpper()</h3>
+            <h5>@user.Email</h5>
+            <h5>@user.Position</h5>
+            <a asp-controller="Task" asp-action="Tasks" asp-route-id="@user.Id" class="btn btn-primary mt-2">Tasks</a>
+            <a asp-controller="Team" asp-action="Equipment" asp-route-id="@user.Id" class="btn btn-primary mt-2">Equipment</a>
+
+        </div>
+    }
+</div>
+
+
+

@@ -1,0 +1,40 @@
+﻿@model List<Equipment>
+
+<div class="container mt-5">
+    <div class="d-flex mb-3">
+        <div>
+            <h2 class="mb-4">Equipment List</h2>
+        </div>
+        <div class="ms-auto">
+            <a asp-controller="Equipment" asp-action="Add" class="btn btn-primary">Add Equipment</a>
+        </div>
+    </div>
+    <table class="table table-bordered table-hover">
+        <thead class="table-light">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Type</th>
+                <th scope="col">Model</th>
+                <th scope="col">Serial Number</th>
+                <th scope="col">In Use</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.TypeOfEqp</td>
+                    <td>@item.Model</td>
+                    <td>@item.SerialNumber</td>
+                    <td>@(item.InUse == 0 ? "Not in use" : "In use")</td>
+                    <td class="text-center">
+                        <a class="btn btn-primary" asp-controller="Equipment" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a class="btn btn-danger" asp-controller="Equipment" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

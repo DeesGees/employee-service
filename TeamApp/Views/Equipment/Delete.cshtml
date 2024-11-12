@@ -1,0 +1,24 @@
+﻿<div class="d-flex flex-row justify-content-center">
+    <form asp-controller="Equipment" asp-action="Delete" method="Post" style="width: 30rem; border:solid 1px; border-radius: 10px;" class="mt-5 p-5">
+        <div class="">
+            <lable class="form-label mt-3">Type:</lable>
+            <input class="form-control mt-3" name="TypeOfEqp" value="@Model.TypeOfEqp" />
+        </div>
+        <div class="mt-2">
+            <lable class="form-label mt-3">Model</lable>
+            <input class="form-control mt-3" name="Model" value="@Model.Model" />
+        </div>
+        <div class="mt-2">
+            <lable class="form-label mt-3">Serial Number</lable>
+            <input class="form-control mt-3" name="SerialNumber" value="@Model.SerialNumber" />
+        </div>
+        <div class="mt-2">
+            <lable class="form-label mt-3">State of use:</lable>
+            <input class="form-control" value="@(Model.InUse == 0 ? "Not in use" : "In Use" )" />
+        </div>
+        <input type="hidden" value="@Model.UserId" name="UserId" />
+        <div>
+            <button type="submit" class="btn btn-danger mt-4 px-5">Delete</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,50 @@
+﻿@model TeamApp.ViewModels.LoginViewModel
+
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <form class="card p-5" asp-controller="Login" asp-action="Index" method="POST" style="width: 100%; max-width: 400px;">
+
+        <h1 class="text-center">Please Sign in:</h1>
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="alert alert-danger">
+                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <p>@error.ErrorMessage</p>
+                }
+            </div>
+        }
+
+        <div class="mb-3">
+            <label class="form-label">Email: </label>
+            <input id="email-login" type="text" class="form-control" asp-for="Email" placeholder="example@mail.com"/>
+            <span class="text-danger" asp-validation-for="Email"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Password: </label>
+            <input id="pwd-login" type="password" class="form-control" asp-for="Password" placeholder="Enter you password"/>
+            <span class="text-danger" asp-validation-for="Password"></span>
+        </div>
+
+        <div class="d-grid gap-2 mt-4">
+            <button id="btn-login" class="btn btn-primary" type="submit">Sign in <i class="bi bi-box-arrow-in-right"></i></button>
+        </div>
+        <div class="container">
+            <div class="row align-items-center my-4">
+                <div class="col">
+                    <hr>
+                </div>
+                <div class="col-auto">
+                    <span class="fw-bold">OR</span>
+                </div>
+                <div class="col">
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <div class="d-grid gap-2">
+            <button asp-controller="Register" asp-action="Index" class="btn btn-primary">Register <i class="bi bi-journal-arrow-up"></i></button>
+        </div>
+        <span class="mt-4 fst-italic text-secondary" >By any issues please contact the IT team</span>
+    </form>
+</div>

@@ -1,0 +1,31 @@
+﻿@model Users
+
+<div class="container shadow shadow-lg h-100 p-5">
+    <form method="post" asp-controller="Task" asp-action="SaveTask">
+        <div class="row">
+            <div class="col-6">
+                <div>
+                    <lable class="form-label fw-bold">Name:</lable>
+                    <input class="form-control" name="UserName" type="text" value="@Model.Name" readonly />
+                </div>
+                <div class="mt-4">
+                    <lable class="form-label fw-bold">Surname:</lable>
+                    <input class="form-control" name="UserSurname" type="text" value="@Model.Surname" readonly />
+                </div>
+                <div class="mt-4">
+                    <lable class="form-label fw-bold">Task Header:</lable>
+                    <input class="form-control" name="TaskHeader" type="text" />
+                </div>
+                <div class="mt-4">
+                    <lable class="form-label fw-bold">Task Description:</lable>
+                    <textarea id="taskDescription" name="TaskDescription" class="form-control" rows="5" placeholder="Describe the task!"></textarea>
+                </div>
+                <input type="hidden" name="UserId" value="@Model.Id" />
+                <input type="hidden" name="TaskAddedDate" value="@DateTime.Now" />
+                <button class="btn btn-primary mt-4 px-4">
+                    Add new task
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

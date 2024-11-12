@@ -1,0 +1,33 @@
+﻿@model Users
+
+
+<div class="container p-5 vw-100 shadow-lg">
+    <div class="container">
+        <div class="w-50 m-auto border border-primary p-5">
+                <div><h3 class="text-center">My Profile</h3></div>
+                <div class="mt-5">
+                    <lable class="form-label fs-4">Name: </lable>
+                    <input class="p-2 fw-bold form-control" type="text" name="Name" value="@Model.Name" readonly />
+                </div>
+                <div class="mt-4">
+                    <lable class="form-label fs-4">Surname:</lable>
+                    <input class="p-2 fw-bold form-control" type="text" name="Surname" value="@Model.Surname" readonly />
+                </div>
+                <div class="mt-4">
+                    <label class="form-label">Email:</label>
+                    <input class="p-2 fw-bold form-control" type="text" name="Email" value="@Model.Email" readonly />
+                </div>
+                <div class="mt-4">
+                    <label class="form-label">Position:</label>
+                    <input class="p-2 fw-bold form-control" type="text" name="Position" value="@Model.Position" readonly />
+                </div>
+                <div class="mt-4">
+                    <label class="form-label">Team:</label>
+                    <input class="p-2 fw-bold form-control" type="text" name="Team" value="@Model.Team" readonly />
+                </div>
+                <div class="mt-4 d-flex justify-content-center">
+                    <a asp-controller="Profile" asp-action="ChangePassword" asp-route-id="@Model.Id" class="btn btn-primary">Change Password</a>
+                </div>
+            </div>
+    </div>
+</div>

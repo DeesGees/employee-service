@@ -1,0 +1,53 @@
+﻿@model List<Tasks>
+
+<div class="shadow shadow-lg p-5">
+    <div class="mb-4">
+        <form method="get" asp-action="Tasks" class="d-inline">
+            <input type="hidden" name="status" value="0" />
+            <button type="submit" class="btn btn-success">U toku</button>
+        </form>
+        <form method="get" asp-action="Tasks" class="d-inline">
+            <input type="hidden" name="status" value="1" />
+            <button type="submit" class="btn btn-danger">Zavrseni</button>
+        </form>
+        <form method="get" asp-action="Tasks" class="d-inline">
+            <input type="hidden" name="status" value="2" />
+            <button type="submit" class="btn btn-warning">Nezapoceti</button>
+        </form>
+    </div>
+
+
+    <div class="accordion" id="accordionExample">
+        @foreach (var task in Model.OrderBy(t => t.TaskStatus).ThenBy(t => t.TaskHeader))
+        {
+            var taskId = $"collapse{task.Id}";
+
+            <div class="accordion-item mt-3">
+                <h2 class="accordion-header">
+                    <button style="--bs-bg-opacity: .5;" class="accordion-button collapsed @(task.TaskStatus == 1 ? "bg-danger" : task.TaskStatus == 0 ? "bg-success" : task.TaskStatus == 2 ? "bg-warning" : "")" type="button" data-bs-toggle="collapse" data-bs-target="#@taskId" aria-expanded="false" aria-controls="@taskId">
+                        <h4>@task.TaskHeader</h4> <div class=" ms-3 rounded-circle" style="width: 2rem; height: 2rem;"></div>
+                    </button>
+                </h2>
+                <div id="@taskId" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <strong>@task.TaskDescription</strong>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="d-flex">
+        <form method="get" asp-controller="Task" asp-action="AddTask">
+            <input type="hidden" name="id" value="@ViewBag.UserId" />
+            <button type="submit" class="btn btn-primary mt-5 px-4">
+                New Task
+            </button>
+        </form>
+        <form class="ms-4" method="get" asp-controller="Task" asp-action="AddTask">
+            <input type="hidden" name="id" value="@ViewBag.UserId" />
+            <button type="submit" class="btn btn-primary mt-5 px-4">
+                Equipment
+            </button>
+        </form>
+    </div>
+</div>

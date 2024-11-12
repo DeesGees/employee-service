@@ -1,0 +1,37 @@
+﻿@model TeamApp.ViewModels.UserAndRolesViewModel
+
+<div class="container mt-5">
+    <h2 class="mb-4">User List</h2>
+    <table class="table table-bordered table-hover">
+        <thead class="table-light">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Surname</th>
+                <th scope="col">Birthday</th>
+                <th scope="col">Email</th>
+                <th scope="col">Position</th>
+                <th scope="col">Team</th>
+                <th scope="col">Joined at</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Users users in Model.User)
+            {
+                <tr>
+                    <td>@users.Name</td>
+                    <td>@users.Surname</td>
+                    <td>@users.BirthDay.ToString("yyyy-MM-dd")</td>
+                    <td>@users.Email</td>
+                    <td>@users.Position</td>
+                    <td>@users.Team</td>
+                    <td>@users.JoinedAt.ToString("yyyy-MM-dd")</td>
+
+                    <td class="text-center">
+                        <a class="btn btn-primary" asp-controller="Profile" asp-action="Edit" asp-route-id="@users.Id">Edit</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

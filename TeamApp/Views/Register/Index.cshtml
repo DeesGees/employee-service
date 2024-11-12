@@ -1,0 +1,64 @@
+﻿@model TeamApp.ViewModels.RegistrationViewModel
+
+<div class="d-flex justify-content-center align-items-center vh-75">
+    <form class="card p-5 w-100 shadow-lg" asp-controller="Register" asp-action="Registration" method="post">
+        <h1 class="text-center mb-5">Register: </h1>
+        <div class="d-flex flex-column w-50 mx-auto">
+
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="alert alert-danger">
+                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        <p>@error.ErrorMessage</p>
+                    }
+                </div>
+            }
+
+            <div class="mb-3">
+                <label class="form-label text-start fw-bold">Name:</label>
+                <input type="text" class="form-control" asp-for="Name" />
+                <span class="text-danger" asp-validation-for="Name"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label text-start fw-bold">Surname:</label>
+                <input type="text" class="form-control" asp-for="Surname" />
+                <span class="text-danger" asp-validation-for="Surname"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label text-start fw-bold">Birthday:</label>
+                <input type="date" class="form-control" asp-for="BirthDay" />
+                <span class="text-danger" asp-validation-for="BirthDay"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label text-start fw-bold">Email:</label>
+                <input type="email" class="form-control" asp-for="Email" />
+                <span class="text-danger" asp-validation-for="Email"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label text-start fw-bold">Password:</label>
+                <input type="password" class="form-control" asp-for="Password" />
+                <span class="text-danger" asp-validation-for="Password"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label text-start fw-bold">Confirm Password:</label>
+                <input type="password" class="form-control" asp-for="ConfirmPassword" />
+                <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label text-start fw-bold">Position:</label>
+                <input type="text" class="form-control" asp-for="Position" />
+                <span class="text-danger" asp-validation-for="Position"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label text-start fw-bold">Team:</label>
+                <input type="text" class="form-control" asp-for="Team" />
+                <span class="text-danger" asp-validation-for="Team"></span>
+            </div>
+
+            <div class="mt-3">
+                <button type="submit" class="btn btn-primary w-100">Register</button>
+            </div>
+        </div>
+    </form>
+</div>

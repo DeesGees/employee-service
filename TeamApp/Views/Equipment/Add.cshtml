@@ -1,0 +1,38 @@
+﻿@model List<Users>
+
+
+<div class="d-flex flex-row justify-content-center">
+    <form asp-controller="Equipment" asp-action="Add" method="Post" style="width: 30rem; border:solid 1px; border-radius: 10px;" class="mt-5 p-5">
+        <div class="mt-2">
+            <lable class="form-label mt-3">Please Select User: </lable>
+            <select class="form-select mt-3" name="UserId">
+                <option>Select a employee</option>
+                @foreach(var user in Model){
+                    <option value="@user.Id">@user.Name @user.Surname</option>
+                }
+            </select>
+        </div>
+        <div class="mt-3">
+            <lable class="form-label mt-3">Type:</lable>
+            <input class="form-control mt-3" name="TypeOfEqp" />
+        </div>
+        <div class="mt-2">
+            <lable class="form-label mt-3">Model</lable>
+            <input class="form-control mt-3" name="Model" />
+        </div>
+        <div class="mt-2">
+            <lable class="form-label mt-3">Serial Number</lable>
+            <input class="form-control mt-3" name="SerialNumber"/>
+        </div>
+        <div class="mt-2">
+            <lable class="form-label mt-3">Please Select:</lable>
+            <select class="form-select mt-3" name="InUse">
+                <option value="1">In Use</option>
+                <option value="0">Not in use</option>
+            </select>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary mt-4 px-5">Add Item</button>
+        </div>
+    </form>
+</div>

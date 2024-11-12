@@ -1,0 +1,52 @@
+﻿@model TeamApp.ViewModels.UserAndRolesViewModel
+
+
+<div class="container p-5 vh-100 vw-100 shadow-lg">
+    <div class="row">
+        <div class="col-6">
+            <div class="d-flex flex-column">
+                <label class="fs-3 ">Name:</label>
+                <input class="w-50 fs-4 p-1 fw-bold fst-italic mt-3 px-2" value="@Model.SingleUser.Name" disabled/>
+            </div>
+            <div class="d-flex flex-column">
+                <label class="fs-3 mt-3">Surname:</label>
+                <input class="w-50 fs-4 p-1 fw-bold mt-3 fst-italic px-2" value="@Model.SingleUser.Surname" disabled />
+            </div>
+            <div class="d-flex flex-column">
+                <label class="fs-3 mt-3">Position:</label>
+                <input class="w-50 fs-4 p-1 fw-bold mt-3 fst-italic px-2" value="@Model.SingleUser.Position" disabled />
+            </div>
+            <div class="d-flex flex-column">
+                <label class="fs-3 mt-3">Team:</label>
+                <input class="w-50 fs-4 p-1 fw-bold mt-3 fst-italic px-2" value="@Model.SingleUser.Team" disabled />
+            </div>
+            <div class="d-flex flex-column">
+                <label class="fs-3 mt-3">Email:</label>
+                <input class="w-50 fs-4 p-1 fw-bold mt-3 fst-italic px-2" value="@Model.SingleUser.Email" disabled />
+            </div>
+            <div class="d-flex flex-column">
+                <label class="fs-3 mt-3">Date of employment:</label>
+                <input class="w-50 fs-4 p-1 fw-bold mt-3" value="@Model.SingleUser.JoinedAt" disabled />
+            </div>
+        </div>
+        <div class="col-6">
+            <form method="post" asp-controller="Profile" asp-action="Edit" class="d-inline">
+                <input name="SelectedUserId" asp-for="@Model.SelectedUserId" type="hidden" value="@Model.SingleUser.Id" />
+                <h2>Select a user role for the User:</h2>
+                <select class="form-select mt-3" asp-for="@Model.SelectedRole" name="SelectedRole" id="roleSelect">
+                    <option selected>Select a role</option>
+                    @foreach (var item in Model.Role)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+                <button class="btn btn-primary mt-3" type="submit">Save changes</button>
+            </form>
+            <form method="post" asp-controller="Profile" asp-action="ChangeRole" class="d-inline">
+                <input name="SelectedUserId" asp-for="@Model.SelectedUserId" type="hidden" value="@Model.SingleUser.Id" />
+                <input name="SelectedRole" id="selectedRole" type="hidden" value="" />
+                <button class="btn btn-secondary mt-3" type="submit" onclick="setSelectedRole()">Change role</button>
+            </form>
+        </div>
+    </div>
+</div>

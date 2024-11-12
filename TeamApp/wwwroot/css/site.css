@@ -1,0 +1,63 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.myTeamUsers{
+    width:15.7rem;
+}
+
+.linkForMyTeam{
+   text-decoration:none;
+   color:black;
+}
+
+.status-circle {
+    width: 15px; 
+    height: 15px; 
+    border-radius: 50%; 
+    display: inline-block; 
+    margin-left: 10px; 
+}
+
+/*#clock {
+    width:100px;
+    height:100px;
+    font-family: 'Arial', sans-serif;
+    font-size: 48px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-top: 20%;
+}*/
+
+
+.side-navigation-bar{
+    width: 18rem;
+    height:100vh;
+    border-right: 1px solid #000;
+}
+
+@media (max-width: 768px) {
+    .side-navigation-bar {
+        display: none;
+    }
+}
