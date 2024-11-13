@@ -85,8 +85,8 @@ function SelectSurnameAndId()
 //setInterval(updateClock, 1000);
 //updateClock();
 
-const email = "";
-const pass = "";
+const email = "test@test.com";
+const pass = "Akin12345!";
 
 function autologin() {
     document.querySelector("#email-login").value = email;
